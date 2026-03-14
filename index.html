@@ -186,10 +186,6 @@
 
     <h2>Budget Tracker</h2>
 
-    <div class="balance">
-      Balance: ₱<span id="balance">0</span>
-    </div>
-
     <div class="summary">
       <div class="box">
         Income<br>
@@ -201,18 +197,23 @@
       </div>
     </div>
 
-    <div class="today">
-      Spent Today: ₱<span id="today">0</span>
-    </div>
 
     <div class="form">
-      <input id="text" placeholder="Description">
+      <input id="text" placeholder="Item">
       <input id="amount" type="number" placeholder="Amount">
 
       <select id="type">
         <option value="expense">Expense</option>
         <option value="income">Income</option>
       </select>
+      
+      <div class="balance">
+      Balance: ₱<span id="balance">0</span>
+    </div>
+      
+      <div class="today">
+      Spent Today: ₱<span id="today">0</span>
+    </div>
 
       <button onclick="addTransaction()">Add Transaction</button>
     </div>
@@ -269,12 +270,12 @@
       // Popup feedback
       if (type === "expense") {
         if (Number(amount) > 500) {
-          showToas("Palagasto Marie ahh"", "#dc3545");
+          showToast("Tipid man pag may time", "#dc3545");
         } else {
           showToast("Tipid yan?", "#28a745");
         }
       } else {
-        showToast("sanaol may income", "#28a745");
+        showToast("Huwaw may income", "#28a745");
       }
     }
 
@@ -305,7 +306,7 @@
             <div class="trans-type" style="color:${color}">${t.type.charAt(0).toUpperCase() + t.type.slice(1)}</div>
             <div class="trans-date">${t.date}</div>
           </div>
-          <span class="delete" onclick="deleteTransaction(${t.id})">x</span>
+          <span class="delete" onclick="deleteTransaction(${t.id})">DELETE</span>
         `;
         list.appendChild(li);
       });
@@ -335,3 +336,4 @@
   </script>
 </body>
 </html>
+
